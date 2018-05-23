@@ -34,6 +34,8 @@ class Transfer
       self.sender.deposit(self.amount)
       self.receiver.deposit(-(self.amount))
       self.status = "reversed"
+    else
+      "Reverse transfer failed."
     end
   end
 
