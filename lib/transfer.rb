@@ -20,7 +20,8 @@ class Transfer
 
   def execute_transaction
     if self.valid?
-      self.sender.deposit(-amount)
+      self.sender.deposit(-self.amount)
+      self.receiver.deposit(self.amount)
     else
       "The transaction has been rejected."
   end
