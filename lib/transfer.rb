@@ -21,7 +21,7 @@ class Transfer
   end
 
   def execute_transaction
-    if self.valid? && self.status = "pending" && self.sender.balance >= self.amount
+    if self.valid? && self.status == "pending" && self.sender.balance >= self.amount
       self.sender.deposit(-(self.amount))
       self.receiver.deposit(self.amount)
       self.status = "complete"
@@ -32,7 +32,7 @@ class Transfer
   end
 
   def reverse_transfer
-    if self.status = "complete"
+    if self.status == "complete"
       self.sender.deposit(self.amount)
       self.receiver.deposit(-(self.amount))
       self.status = "reversed"
